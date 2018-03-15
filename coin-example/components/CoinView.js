@@ -34,6 +34,13 @@ class CoinView extends React.Component {
     )
     .then(response => response.json())
     .then(data => {
+      let date = new Date();
+      let now = date.toLocaleString()
+
+      if (this.props.refreshDate != null) {
+        this.props.refreshDate(now); // Run func type props
+      }
+
       this.setState({
         coinData: data,
         isLoaded: true,

@@ -7,7 +7,10 @@ class TopBar extends React.Component {
       <View style={styles.container}>
         <Text>Left</Text>
         {/*<Text>TopBar</Text>*/}
-        <Text style={{fontSize: 16}}>{this.props.title}</Text>{/*Ready to apply title from a parent component*/}
+        <View style={{alignItems: 'center',}}>
+          <Text style={{fontSize: 16}}>{this.props.title}</Text>{/*Ready to apply title from a parent component*/}
+          <Text style={{fontSize: 10}}>{this.props.refreshDate || '-'}</Text>
+        </View>
         <Text>Right</Text>
       </View>
     )

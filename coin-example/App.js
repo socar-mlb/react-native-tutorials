@@ -4,6 +4,20 @@ import CoinView from './components/CoinView';
 import TopBar from './components/TopBar';
 
 export default class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      refreshDate: '-',
+    };
+  }
+
+  _setRefreshDate(date) { // Called from CoinView's prop
+    console.log('Updated: '+ date);
+    this.setState({
+      refreshDate: date,
+    });
+  }
+
   render() {
     return (
       <View style={styles.container}>
@@ -12,11 +26,17 @@ export default class App extends React.Component {
           backgroundColor="blue"
           barStyle="light-content"
         />
-        <TopBar title="코인 시세" />
+        <TopBar
+          title="코인 시세"
+          refreshDate={this.state.refreshDate}
+        />
         <ScrollView
           showsVerticalScrollIndicator={false}
         >
-          <CoinView style={styles.coinView} />
+          <CoinView
+            refreshDate={(date) => this._setRefreshDate(date)}// function type prop
+            style={styles.coinView}
+          />
         </ScrollView>
         {/*<View style={[styles.box, {backgroundColor: 'red'}]}></View>*/}
         {/*<View style={[styles.box, {backgroundColor: 'green'}]}></View>*/}

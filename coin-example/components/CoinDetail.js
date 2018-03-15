@@ -14,7 +14,7 @@ class CoinDetail extends React.Component {
           // source={{uri: 'https://bitcoin.org/img/icons/opengraph.png'}}
           source={{uri: this.props.iconUri}}
         />
-        <View style={{flex: 5}}>
+        <View style={{flex: 5, flexDirection: 'column', justifyContent: 'space-around'}}>
           <Text style={[styles.text, {flex: 1}]}>{this.props.name || 'Name'}</Text>
           <Text style={[styles.text, {flex: 1}]}>{'Price: ' + (this.props.price || 0)}</Text>
           <Text style={[styles.text, {flex: 1}]}>{'Volume: ' + (this.props.volume || 0)}</Text>
