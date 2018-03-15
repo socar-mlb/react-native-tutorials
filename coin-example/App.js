@@ -1,13 +1,20 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, StatusBar } from 'react-native';
+import CoinView from './components/CoinView';
 
 export default class App extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-        <Text>Open up App.js to start working on your app!</Text>
-        <Text>Changes you make will automatically reload.</Text>
-        <Text>Shake your phone to open the developer menu.</Text>
+        <StatusBar
+          hidden={true}
+          backgroundColor="blue"
+          barStyle="light-content"
+        />
+        {/*<View style={[styles.box, {backgroundColor: 'red'}]}></View>*/}
+        {/*<View style={[styles.box, {backgroundColor: 'green'}]}></View>*/}
+        {/*<View style={[styles.box, {backgroundColor: 'blue'}]}></View>*/}
+        <CoinView></CoinView>
       </View>
     );
   }
@@ -15,9 +22,15 @@ export default class App extends React.Component {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+    // flex: 1,
+    // flexDirection: 'row', // column
+    backgroundColor: 'yellow', // backgroundColor: '#fff',
+    // alignItems: 'center', // edit here
+    // justifyContent: 'space-around', // edit here using `center, space-around`
   },
+  box: {
+    backgroundColor: 'blue',
+    width: 50,
+    height: 50,
+  }
 });
