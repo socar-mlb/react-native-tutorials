@@ -17,11 +17,22 @@ export default class Column extends React.Component {
           <View style={{width: 30, height: 30, backgroundColor: 'steelblue'}} />
         </View>
         <View style={{
-          flex: 2,
+          flex: 1,
           borderWidth: 1,
           flexDirection: 'column',
           alignItems: 'center',
           justifyContent: 'center',
+        }}>
+          <View style={{width: 30, height: 30, backgroundColor: 'powderblue'}} />
+          <View style={{width: 30, height: 30, backgroundColor: 'skyblue'}} />
+          <View style={{width: 30, height: 30, backgroundColor: 'steelblue'}} />
+        </View>
+        <View style={{
+          flex: 1,
+          borderWidth: 1,
+          flexDirection: 'column',
+          alignItems: 'flex-end',
+          justifyContent: 'flex-end',
         }}>
           <View style={{width: 30, height: 30, backgroundColor: 'powderblue'}} />
           <View style={{width: 30, height: 30, backgroundColor: 'skyblue'}} />
