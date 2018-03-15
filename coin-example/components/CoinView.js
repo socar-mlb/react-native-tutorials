@@ -1,7 +1,8 @@
 import React from 'react'
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, ToastAndroid } from 'react-native';
 import CoinDetail from './CoinDetail';
 import SampleCoinData from '../data/CoinData';
+import { getCoinIconUri } from "../libs/Constants";
 
 class CoinView extends React.Component {
   constructor(props) {
@@ -19,7 +20,8 @@ class CoinView extends React.Component {
     setInterval(() => {
       this._getCoinData(10);
       console.log('toggled!');
-    }, 1000);
+      ToastAndroid.show('refresh!', ToastAndroid.SHORT);
+    }, 5000);
   }
 
   _getCoinData(limit) {
@@ -50,6 +52,7 @@ class CoinView extends React.Component {
           price={price_usd}
           volume={market_cap_usd}
           time={time}
+          iconUri={getCoinIconUri(name)}
         />
       );
     });

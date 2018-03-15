@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View, StatusBar, ScrollView } from 'react-native';
+import { StyleSheet, Text, View, ScrollView, StatusBar } from 'react-native';
 import CoinView from './components/CoinView';
 import TopBar from './components/TopBar';
 
@@ -13,7 +13,9 @@ export default class App extends React.Component {
           barStyle="light-content"
         />
         <TopBar title="코인 시세" />
-        <ScrollView>
+        <ScrollView
+          showsVerticalScrollIndicator={false}
+        >
           <CoinView style={styles.coinView} />
         </ScrollView>
         {/*<View style={[styles.box, {backgroundColor: 'red'}]}></View>*/}
