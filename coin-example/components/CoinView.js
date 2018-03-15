@@ -4,8 +4,11 @@ import { StyleSheet, Text, View } from 'react-native';
 class CoinView extends React.Component {
   render () {
     return (
-      <View style={styles.container}>
-        <Text>New View </Text>
+      <View style={this.props.style}>{ /* Ready to get style from a parent component */ }
+        {/*<View style={styles.container}>*/}
+        {/*<Text>New View</Text>*/}
+        {/*</View>*/}
+        <Text>코인뷰가 나올것입니다.</Text>
       </View>
     )
   }
@@ -14,11 +17,11 @@ class CoinView extends React.Component {
 const styles = StyleSheet.create({
   container: {
     // width: '50%',
-    // flex: 1,
-    // flexDirection: 'column', // row
+    flex: 1,
+    flexDirection: 'column', // row
     backgroundColor: 'skyblue',
-    // alignItems: 'center',
-    // justifyContent: 'space-around', // center, space-around
+    alignItems: 'center',
+    justifyContent: 'space-around', // center, space-around
   },
 });
 
