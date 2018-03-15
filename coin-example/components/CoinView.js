@@ -4,8 +4,43 @@ import CoinDetail from './CoinDetail';
 import SampleCoinData from '../data/CoinData';
 
 class CoinView extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      coinData: [],
+      isLoaded: false,
+    };
+    // Toggle the state every second
+  }
+
+  componentDidMount() { // After component loaded
+    this._getCoinData(10);
+
+    setInterval(() => {
+      this._getCoinData(10);
+      console.log('toggled!');
+    }, 1000);
+  }
+
+  _getCoinData(limit) {
+    this.setState({
+      isLoaded: false,
+    });
+
+    fetch(
+      `https://api.coinmarketcap.com/v1/ticker/?limit=${limit}`
+    )
+    .then(response => response.json())
+    .then(data => {
+      this.setState({
+        coinData: data,
+        isLoaded: true,
+      });
+    });
+  }
+
   render () {
-    let detailCells = SampleCoinData.map( (data, index) => {
+    let detailCells = /* SampleCoinData */ this.state.coinData.map( (data, index) => {
       const {rank, name, price_usd, market_cap_usd, time} = data; // Destructuring
       return (
         <CoinDetail
@@ -13,7 +48,7 @@ class CoinView extends React.Component {
           rank={rank}
           name={name}
           price={price_usd}
-          volumn={market_cap_usd}
+          volume={market_cap_usd}
           time={time}
         />
       );
@@ -29,7 +64,7 @@ class CoinView extends React.Component {
     //       rank={data.rank}
     //       name={data.name}
     //       price={data.price_usd}
-    //       volumn={data.market_cap_usd}
+    //       volume={data.market_cap_usd}
     //     />
     //   )
     //   detailCells.push(coinDetail);
