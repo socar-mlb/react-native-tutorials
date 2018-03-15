@@ -1,27 +1,34 @@
 import React from 'react'
-import { StyleSheet, Text, View, Image } from 'react-native';
+import { StyleSheet, Text, View, Image, TouchableOpacity } from 'react-native';
 
 class CoinDetail extends React.Component {
+
+  _onPressButton() {
+    console.log('Clicked!');
+  }
+
   render () {
     let date = new Date();
     let now = date.toLocaleString();
 
     return (
-      <View style={styles.container}>
-        <Text style={[styles.number,]}>{'#' + (this.props.rank || 'Rank')}</Text>
-        <Image
-          style={styles.icon}
-          // source={{uri: 'https://bitcoin.org/img/icons/opengraph.png'}}
-          source={{uri: this.props.iconUri}}
-        />
-        <View style={{flex: 5, flexDirection: 'column', justifyContent: 'space-around'}}>
-          <Text style={[styles.text, {flex: 1}]}>{this.props.name || 'Name'}</Text>
-          <Text style={[styles.text, {flex: 1}]}>{'Price: ' + (this.props.price || 0)}</Text>
-          <Text style={[styles.text, {flex: 1}]}>{'Volume: ' + (this.props.volume || 0)}</Text>
+      <TouchableOpacity onPress={this._onPressButton}>
+        <View style={styles.container}>
+          <Text style={[styles.number,]}>{'#' + (this.props.rank || 'Rank')}</Text>
+          <Image
+            style={styles.icon}
+            // source={{uri: 'https://bitcoin.org/img/icons/opengraph.png'}}
+            source={{uri: this.props.iconUri}}
+          />
+          <View style={{flex: 5, flexDirection: 'column', justifyContent: 'space-around'}}>
+            <Text style={[styles.text, {flex: 1}]}>{this.props.name || 'Name'}</Text>
+            <Text style={[styles.text, {flex: 1}]}>{'Price: ' + (this.props.price || 0)}</Text>
+            <Text style={[styles.text, {flex: 1}]}>{'Volume: ' + (this.props.volume || 0)}</Text>
+          </View>
+          {/*<Text style={[styles.text, {flex: 1}]}>{'Updated: ' + (this.props.time || now)}</Text>*/}
+          <Text style={[styles.text, {flex: 3}]}>{'Updated: ' + (Date(this.props.time) || now)}</Text>
         </View>
-        {/*<Text style={[styles.text, {flex: 1}]}>{'Updated: ' + (this.props.time || now)}</Text>*/}
-        <Text style={[styles.text, {flex: 3}]}>{'Updated: ' + (Date(this.props.time) || now)}</Text>
-      </View>
+      </TouchableOpacity>
     )
   }
 }
